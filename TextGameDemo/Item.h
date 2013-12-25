@@ -130,10 +130,11 @@ ostream& operator<<(ostream &os, const Item &_item){
 }
 
 istream& operator>>(istream &is, Item &_item){
+	//must rework input reading from file
 	int intType;
-	is >> _item.name;
+	is >> setw(10) >> _item.name;
 	is.ignore();
-	is >> _item.description;
+	is >> setw(15) >>_item.description;
 	is.ignore();
 	is >> _item.attack;
 	is >> _item.defence;

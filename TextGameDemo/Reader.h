@@ -1,19 +1,14 @@
+#include "Item.h"
 #include <iostream>
 #include <fstream>
-#include "Item.h"
-#include "Inventory.h"
-#include "ItemType.h"
+#include <vector>
 using namespace std;
 
-class Reader {
+static class Reader {
 public:
-	Reader();
-	vector<Item> readItemsFromFile(const string fileName);
+	static vector<Item> readItemsFromFile(const string fileName);
 private:
 };
-
-Reader::Reader(){
-}
 
 vector<Item> Reader::readItemsFromFile(const string fileName){
 	ifstream inFile;
@@ -34,7 +29,7 @@ vector<Item> Reader::readItemsFromFile(const string fileName){
 	vector<Item> itemVector;
 
 	while(inFile >> item){
-		itemVector.push_back(item);		
+		itemVector.push_back(item);
 	}
 	return itemVector;
 }

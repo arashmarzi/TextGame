@@ -3,8 +3,6 @@
 
 #include "stdafx.h"
 #include "Inventory.h"
-#include "Item.h"
-#include "Reader.h"
 #include <iostream>
 using namespace std;
 
@@ -16,7 +14,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	//inventory.addItem(item1);
 	//Item getItem = inventory.getItem(item1);
 	//cout << inventory;
-	Reader reader;
-
+	
+	CharacterInventory cInventory;
+	for(vector<Item>::iterator iter = cInventory.itemDatabase.begin(); iter != cInventory.itemDatabase.end(); iter++) {
+		cout << *iter;
+	}
+	//cout << cInventory.itemDatabase.at(0);
 }
 

@@ -4,9 +4,6 @@
 *  Created on: Oct 28, 2013
 *      Author: Arash
 */
-
-#ifndef CHARACTERINVENTORY_H_
-#define CHARACTERINVENTORY_H_
 #include <iostream>
 #include <vector>
 #include <string>
@@ -15,9 +12,10 @@
 #include "Item.h"
 #include "Reader.h"
 using namespace std;
-s
+
 class Inventory {
 public:
+	static vector<Item> itemDatabase;
 	virtual void addItem(Item item)=0;
 	virtual Item removeItem(Item item)=0;
 	Item getItem(const Item &item);
@@ -25,7 +23,6 @@ public:
 	friend ostream& operator<<(ostream &os, const Inventory &inventory);
 protected:
 	vector<Item> itemList;
-	static vector<Item> itemDatabase;
 };
 
 class CharacterInventory: public Inventory {
@@ -52,9 +49,11 @@ Item Inventory::getItem(const Item &item){
 	return *posIter;
 }
 
+vector<Item> Inventory::itemDatabase = Reader::readItemsFromFile("items.txt");
+
 CharacterInventory::CharacterInventory(){
-	Reader reader;
-	itemDatabase = reader.readItemsFromFile("items.txt");
+	//Reader reader;
+	//itemDatabase = reader.readItemsFromFile("items.txt");
 }
 
 void CharacterInventory::addItem(Item item) {
@@ -94,5 +93,3 @@ ostream& operator<<(ostream &os, const Inventory &_inventory){
 
 	return os;
 }
-
-#endif /* CHARACTERINVENTORY_H_ */
