@@ -131,6 +131,7 @@ ostream& operator<<(ostream &os, const Item &_item){
 
 istream& operator>>(istream &is, Item &_item){
 	//must rework input reading from file
+	string strLine;
 	int intType;
 	is >> setw(10) >> _item.name;
 	is.ignore();

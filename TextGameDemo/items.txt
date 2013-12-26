@@ -1,1 +1,1 @@
-Sword of Fire/A weapon crafted from molten ore/10 10 10 0
+Sword of Fire/A weapon crafted from molten ore/10/10/10/0
