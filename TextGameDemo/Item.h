@@ -35,12 +35,11 @@ public:
 	void setAttack(const double &attack);
 	const double& getDefence() const;
 	void setDefence(const double &defence);
-	const int& getType() const;
+	const ItemType& getType() const;
 	void setType(const int type);
 
 	friend bool operator==(const Item &item, const Item &other);
-	friend ostream& operator<<(ostream &os, const Item &item);
-	friend istream& operator>>(istream &is, Item &item);
+	friend ostream& operator<<(ostream &os, const Item &_item);
 private:
 	string name;
 	string description;
@@ -104,8 +103,8 @@ void Item::setDefence(const double &defence) {
 	this->defence = defence;
 }
 
-const int& Item::getType() const {
-	return type.getType();
+const ItemType& Item::getType() const {
+	return type;
 }
 
 void Item::setType(const int _type) {
@@ -125,24 +124,10 @@ bool operator==(const Item &item, const Item &other){
 }
 
 ostream& operator<<(ostream &os, const Item &_item){
-	os << left << setw(10) << _item.getName() << setw(15) << _item.getDescription() << setw(10) << _item.getAttack() << setw(10) << _item.getDefence() << setw(10) << _item.getAgility() << setw(10) << _item.getType() << endl;
+	os << left << setw(15) << _item.getName() << setw(45) << _item.getDescription() 
+		<< setw(5) << _item.getAttack() << setw(5) << _item.getDefence() 
+		<< setw(5) << _item.getAgility() << setw(5) << _item.getType() << endl;
 	return os;
 }
 
-istream& operator>>(istream &is, Item &_item){
-	//must rework input reading from file
-	string strLine;
-	int intType;
-	is >> setw(10) >> _item.name;
-	is.ignore();
-	is >> setw(15) >>_item.description;
-	is.ignore();
-	is >> _item.attack;
-	is >> _item.defence;
-	is >> _item.agility;
-	is >> intType; 
-	_item.setType(intType);
-
-	return is;
-}
 #endif /* ITEM_H_ */

@@ -1,1 +1,6 @@
-Sword of Fire/A weapon crafted from molten ore/10/10/10/0
+Sword of Fire/A weapon crafted from molten ore/10/5/5/0
+Sword of Earth/A weapon crafted from rock/10/5/5/0
+Sword of Wind/A weapon crafted from air/10/5/5/0
+Sword of Water/A weapon crafted from sea/10/5/5/0
+Standard Armour/Standard issue armour/0/5/0/2
+Nonmagical Potion/Don't worry, its just water/0/0/0/1

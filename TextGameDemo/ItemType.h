@@ -1,5 +1,6 @@
 #include <string>
 #include <map>
+#include <ostream>
 using namespace std;
 
 class ItemType {
@@ -11,6 +12,9 @@ public:
 	ItemType(int _type);
 	const int getType() const;
 	void setType(const int &_type);
+
+	friend ostream& operator<<(ostream &os, const ItemType &_itemType);
+	friend bool operator==(const ItemType &itemType, const ItemType &other);
 private:
 	Type type;
 };
@@ -39,3 +43,26 @@ void ItemType::setType(const int &_type) {
 		break;
 	}
 }
+
+bool operator==(const ItemType &itemType, const ItemType &other){
+	if(itemType.getType() == other.getType()){
+		return true;
+	}
+
+	return false;
+}
+
+ostream& operator<<(ostream &os, const ItemType &_itemType){
+	if(_itemType.getType() == 0){
+		os << "Weapon";
+	} else if(_itemType.getType() == 1){
+		os << "Modifier";
+	} else if(_itemType.getType() == 2){
+		os << "Armour";	
+	} else{
+		os << "None";
+	}
+
+	return os;
+}
+

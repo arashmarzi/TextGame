@@ -28,29 +28,56 @@ vector<Item> Reader::readItemsFromFile(const string fileName){
 
 	Item item;
 	vector<Item> itemVector;
-	
-	string line;
-	int counter;
 
-	// use find algorithm from string library
+	string line;
+	int attributeNumber = 0;
+	int attributeBegin = 0; // pointing to beginning of attribute		
+	int backslashPosition = -1;
 
 	while(getline(inFile, line)){ // read line from items.txt
-		string::iterator iterBegin = line.begin(); // iterator pointing to beginning of attribute
-		string::iterator iterCurrent = line.begin()++; // iterator pointing to current character
-		while(iterCurrent != line.end()){ // while the current iterator has not reached the end of current string
-			if(*iterCurrent == '/'){ // if the current iterator hits a backslash then everything from beginning iterator till 1 before current iterator is an attribute
-				switch (counter) // determine the attribute
-				{
-				case 0: // name
-				case 1: // description
-				case 2: // attack
-				case 3: // defence
-				case 4: // agility
-				case 5: // item type
-				}
+		attributeNumber = 0;
+		attributeBegin = 0;
+		backslashPosition = line.find("/");
+		while(backslashPosition > -1){
+			switch(attributeNumber){
+			case 0: // name
+				name = line.substr(attributeBegin, backslashPosition);
+				item.setName(name);
+				attributeBegin = backslashPosition + 1;
+				attributeNumber++;
+				backslashPosition = line.find("/", attributeBegin);
+			case 1: // description
+				description = line.substr(attributeBegin, backslashPosition-attributeBegin);
+				item.setDescription(description);
+				attributeBegin = backslashPosition + 1;
+				attributeNumber++;
+				backslashPosition = line.find("/", attributeBegin);
+			case 2: // attack
+				attack = stoi(line.substr(attributeBegin, backslashPosition));
+				item.setAttack(attack);
+				attributeBegin = backslashPosition + 1;
+				attributeNumber++;
+				backslashPosition = line.find("/", attributeBegin);
+			case 3: // defence
+				defence = stoi(line.substr(attributeBegin, backslashPosition));
+				item.setDefence(defence);
+				attributeBegin = backslashPosition + 1;
+				attributeNumber++;
+				backslashPosition = line.find("/", attributeBegin);
+			case 4: // agility
+				agility = stoi(line.substr(attributeBegin, backslashPosition));
+				item.setAgility(agility);
+				attributeBegin = backslashPosition + 1;
+				attributeNumber++;
+			case 5: // item type
+				type = stoi(line.substr(attributeBegin));
+				item.setType(type.getType());
+				attributeBegin = backslashPosition + 1;
+				attributeNumber++;
+				backslashPosition = -1;
 			}
 		}
-		
+
 		itemVector.push_back(item);
 	}
 	return itemVector;

@@ -86,7 +86,7 @@ Item EnemyInventory::removeItem(Item item){
 }
 
 ostream& operator<<(ostream &os, const Inventory &_inventory){
-	os << left << setw(10) << "Name" << setw(15) << "Description" << setw(10) << "Attack" << setw(10) << "Defence" << setw(10) << "Agility" << setw(10) << "Type" << endl;
+	os << left << setw(15) << "Name" << setw(45) << "Description" << setw(10) << "Attack" << setw(10) << "Defence" << setw(10) << "Agility" << setw(10) << "Type" << endl;
 	for(vector<Item>::const_iterator iter = _inventory.itemList.cbegin(); iter != _inventory.itemList.end(); iter++){
 		os << *iter << endl;
 	}

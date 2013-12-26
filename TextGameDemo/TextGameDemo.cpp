@@ -19,6 +19,5 @@ int _tmain(int argc, _TCHAR* argv[])
 	for(vector<Item>::iterator iter = cInventory.itemDatabase.begin(); iter != cInventory.itemDatabase.end(); iter++) {
 		cout << *iter;
 	}
-	//cout << cInventory.itemDatabase.at(0);
 }
 
