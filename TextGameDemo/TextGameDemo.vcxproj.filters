@@ -39,7 +39,7 @@
     <ClInclude Include="..\..\..\workspace\game\Profile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\workspace\game\Race.h">
+    <ClInclude Include="..\..\..\workspace\game\RaceType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
