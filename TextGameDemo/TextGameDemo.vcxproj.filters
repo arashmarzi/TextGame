@@ -36,10 +36,10 @@
     <ClInclude Include="ItemType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\workspace\game\Profile.h">
+    <ClInclude Include="RaceType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\workspace\game\RaceType.h">
+    <ClInclude Include="Profile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -79,11 +79,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\workspace\game\Profile.h" />
-    <ClInclude Include="..\..\..\workspace\game\RaceType.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />
+    <ClInclude Include="Profile.h" />
+    <ClInclude Include="RaceType.h" />
     <ClInclude Include="Reader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
