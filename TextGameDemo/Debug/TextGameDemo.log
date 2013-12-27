@@ -1,17 +1,187 @@
-﻿Build started 2013-12-26 5:10:59 AM.
-     1>Project "C:\Users\Arash\Documents\GitHub\TextGame\TextGameDemo\TextGameDemo.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 2013-12-27 3:39:47 AM.
+     1>Project "C:\Users\Arash\Documents\GitHub\TextGame\TextGameDemo\TextGameDemo.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\TextGameDemo.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\TextGameDemo.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt TextGameDemo.cpp
          TextGameDemo.cpp
      1>c:\users\arash\documents\github\textgame\textgamedemo\reader.h(12): warning C4091: 'static ' : ignored on left of 'Reader' when no variable is declared
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Arash\Documents\GitHub\TextGame\Debug\TextGameDemo.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Arash\Documents\GitHub\TextGame\Debug\TextGameDemo.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Arash\Documents\GitHub\TextGame\Debug\TextGameDemo.lib" /MACHINE:X86 Debug\stdafx.obj
-         Debug\TextGameDemo.obj
-         TextGameDemo.vcxproj -> C:\Users\Arash\Documents\GitHub\TextGame\Debug\TextGameDemo.exe
-     1>Done Building Project "C:\Users\Arash\Documents\GitHub\TextGame\TextGameDemo\TextGameDemo.vcxproj" (Rebuild target(s)).
+     1>c:\users\arash\documents\github\textgame\textgamedemo\reader.h(8): error C2011: 'Reader' : 'class' type redefinition
+                 c:\users\arash\documents\github\textgame\textgamedemo\reader.h(8) : see declaration of 'Reader'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\reader.h(14): error C2027: use of undefined type 'Reader'
+                 c:\users\arash\documents\github\textgame\textgamedemo\reader.h(8) : see declaration of 'Reader'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(16): error C2011: 'Inventory' : 'class' type redefinition
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(16) : see declaration of 'Inventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(28): error C2011: 'CharacterInventory' : 'class' type redefinition
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(28) : see declaration of 'CharacterInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(37): error C2011: 'EnemyInventory' : 'class' type redefinition
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(37) : see declaration of 'EnemyInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(47): error C2027: use of undefined type 'Inventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(16) : see declaration of 'Inventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(48): error C2065: 'itemList' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(48): error C2228: left of '.begin' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(48): error C2228: left of '.end' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(52): error C2027: use of undefined type 'Inventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(16) : see declaration of 'Inventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(52): error C2027: use of undefined type 'Reader'
+                 c:\users\arash\documents\github\textgame\textgamedemo\reader.h(8) : see declaration of 'Reader'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(54): error C2027: use of undefined type 'CharacterInventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(28) : see declaration of 'CharacterInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(54): error C2059: syntax error : ')'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(54): error C2143: syntax error : missing ';' before '{'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(54): error C2447: '{' : missing function header (old-style formal list?)
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(59): error C2027: use of undefined type 'CharacterInventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(28) : see declaration of 'CharacterInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(60): error C2065: 'itemList' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(60): error C2228: left of '.size' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(60): error C2065: 'MAXCHARACTERINVENTORYSIZE' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(61): error C2065: 'itemList' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(61): error C2228: left of '.push_back' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(65): error C2027: use of undefined type 'CharacterInventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(28) : see declaration of 'CharacterInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(66): error C2065: 'itemList' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(66): error C2228: left of '.begin' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(66): error C2228: left of '.end' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(68): error C2065: 'itemList' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(68): error C2228: left of '.erase' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(72): error C2027: use of undefined type 'EnemyInventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(37) : see declaration of 'EnemyInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(72): error C2059: syntax error : ')'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(72): error C2143: syntax error : missing ';' before '{'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(72): error C2447: '{' : missing function header (old-style formal list?)
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(75): error C2027: use of undefined type 'EnemyInventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(37) : see declaration of 'EnemyInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(75): error C2084: function 'void addItem(Item)' already has a body
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(59) : see previous definition of 'addItem'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(76): error C2065: 'itemList' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(76): error C2228: left of '.size' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(76): error C2065: 'MAXENEMYINVENTORYSIZE' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(77): error C2065: 'itemList' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(77): error C2228: left of '.push_back' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(81): error C2027: use of undefined type 'EnemyInventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(37) : see declaration of 'EnemyInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(81): error C2084: function 'Item removeItem(Item)' already has a body
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(65) : see previous definition of 'removeItem'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(82): error C2065: 'itemList' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(82): error C2228: left of '.begin' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(82): error C2228: left of '.end' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(84): error C2065: 'itemList' : undeclared identifier
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(84): error C2228: left of '.erase' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(88): error C2084: function 'std::ostream &operator <<(std::ostream &,const Inventory &)' already has a body
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(23) : see previous definition of '<<'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(90): error C2027: use of undefined type 'Inventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(16) : see declaration of 'Inventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(90): error C2228: left of '.itemList' must have class/struct/union
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(90): error C2228: left of '.cbegin' must have class/struct/union
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(16) : see declaration of 'Inventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(90): error C2228: left of '.end' must have class/struct/union
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(18): error C2143: syntax error : missing ',' before '&'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(46): error C2079: 'CharacterProfile::characterInventory' uses undefined class 'CharacterInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(58): error C2079: 'EnemyProfile::enemyInventory' uses undefined class 'EnemyInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(134): error C2614: 'CharacterProfile' : illegal member initialization: 'isAlive' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(135): error C2248: 'Profile::level' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(22) : see declaration of 'Profile::level'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(136): error C2248: 'Profile::maxHealth' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(28) : see declaration of 'Profile::maxHealth'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(136): error C2248: 'Profile::level' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(22) : see declaration of 'Profile::level'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(142): error C2512: 'Profile' : no appropriate default constructor available
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(142): error C2614: 'CharacterProfile' : illegal member initialization: 'isAlive' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(142): error C2614: 'CharacterProfile' : illegal member initialization: 'maxHealth' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(142): error C2614: 'CharacterProfile' : illegal member initialization: 'currentHealth' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(142): error C2614: 'CharacterProfile' : illegal member initialization: 'level' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(142): error C2614: 'CharacterProfile' : illegal member initialization: 'name' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(143): error C2248: 'Profile::level' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(22) : see declaration of 'Profile::level'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(144): error C2248: 'Profile::maxHealth' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(28) : see declaration of 'Profile::maxHealth'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(144): error C2248: 'Profile::level' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(22) : see declaration of 'Profile::level'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(149): error C2248: 'Profile::level' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(22) : see declaration of 'Profile::level'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(162): error C2296: '%=' : illegal, left operand has type 'double'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(162): error C2297: '%=' : illegal, right operand has type 'double'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(171): error C2248: 'Profile::attack' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(23) : see declaration of 'Profile::attack'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(171): warning C4244: '+=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(172): error C2248: 'Profile::defence' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(24) : see declaration of 'Profile::defence'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(172): warning C4244: '+=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(173): error C2248: 'Profile::agility' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(25) : see declaration of 'Profile::agility'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(173): warning C4244: '+=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(175): error C2248: 'Profile::attack' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(23) : see declaration of 'Profile::attack'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(175): warning C4244: '-=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(176): error C2248: 'Profile::defence' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(24) : see declaration of 'Profile::defence'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(176): warning C4244: '-=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(177): error C2248: 'Profile::agility' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(25) : see declaration of 'Profile::agility'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(177): warning C4244: '-=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(182): error C2027: use of undefined type 'CharacterInventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(28) : see declaration of 'CharacterInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(188): error C2614: 'EnemyProfile' : illegal member initialization: 'isAlive' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(193): error C2512: 'Profile' : no appropriate default constructor available
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(193): error C2614: 'EnemyProfile' : illegal member initialization: 'isAlive' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(193): error C2614: 'EnemyProfile' : illegal member initialization: 'maxHealth' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(193): error C2614: 'EnemyProfile' : illegal member initialization: 'currentHealth' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(193): error C2614: 'EnemyProfile' : illegal member initialization: 'level' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(193): error C2614: 'EnemyProfile' : illegal member initialization: 'name' is not a base or member
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(199): error C2248: 'Profile::attack' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(23) : see declaration of 'Profile::attack'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(199): warning C4244: '+=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(200): error C2248: 'Profile::defence' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(24) : see declaration of 'Profile::defence'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(200): warning C4244: '+=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(201): error C2248: 'Profile::agility' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(25) : see declaration of 'Profile::agility'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(201): warning C4244: '+=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(203): error C2248: 'Profile::attack' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(23) : see declaration of 'Profile::attack'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(203): warning C4244: '-=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(204): error C2248: 'Profile::defence' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(24) : see declaration of 'Profile::defence'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(204): warning C4244: '-=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(205): error C2248: 'Profile::agility' : cannot access private member declared in class 'Profile'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(25) : see declaration of 'Profile::agility'
+                 c:\users\arash\documents\github\textgame\textgamedemo\profile.h(6) : see declaration of 'Profile'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(205): warning C4244: '-=' : conversion from 'const double' to 'int', possible loss of data
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(211): error C2027: use of undefined type 'EnemyInventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(37) : see declaration of 'EnemyInventory'
+                 c:\users\arash\documents\github\textgame\textgamedemo\inventory.h(37) : see declaration of 'EnemyInventory'
+     1>c:\users\arash\documents\github\textgame\textgamedemo\profile.h(212): error C2065: 'enemyInventory' : undeclared identifier
+     1>Done Building Project "C:\Users\Arash\Documents\GitHub\TextGame\TextGameDemo\TextGameDemo.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:02.43
+Time Elapsed 00:00:00.80

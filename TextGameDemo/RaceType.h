@@ -1,7 +1,4 @@
 #include <iostream>
-#include "Item.h"
-#include "Profile.h"
-#include "Inventory.h"
 using namespace std;
 
 class RaceType {
@@ -17,4 +14,15 @@ class RaceType {
 		AERIAL,
 		DRAGON
 	};
+
+public:
+	RaceType();
+	RaceType(int _race);
+private:
+	Race race;
 };
+
+RaceType::RaceType(){}
+RaceType::RaceType(int _race) {
+	race = (Race)_race;
+}

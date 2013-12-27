@@ -4,23 +4,25 @@
 
 class Profile {
 public:
-	Profile(string _name, int _level, Race _race, double _currentHealth, double _maxHealth);
-	Profile(string _name, int _level, Race _race);
+	Profile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth);
+	Profile(string _name);
 	void deathOfCharacter();
 	void isCharacterAlive();
 	void incrementCurrentHealth(int incrHealth);
 	void decrementCurrentHealth(int decrHealth);
 	void incrementMaxHealth(int incrHealth);
 	void decrementMaxHealth(int decrHealth);
-	virtual bool ItemUsable(const Item &item, int race);
-	virtual void updateStatsByItem(const Item &item, int race);
-	virtual void updateStatsByEnemy(const EnemyProfile &enemy, int race);
-	virtual Inventory getInventory();
+	bool ItemUsable(const Item &item);
+	void updateStatsByItem(const Item &item, bool doAdd);
+	void updateStatsByEnemy(const EnemyProfile &enemy);
 
-private:
+protected:
 	string name;
 	int level;
-	Race race;
+	int attack;
+	int defence;
+	int agility;
+	RaceType race;
 	double currentHealth;
 	double maxHealth;
 	bool isAlive;
@@ -28,14 +30,14 @@ private:
 
 class CharacterProfile: public Profile {
 public:
-	CharacterProfile(string _name, int _level, Race _race, double _currentHealth, double _maxHealth);
+	CharacterProfile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth);
 	CharacterProfile(string _name);
 	void incrementLevel();
 	void incrementMaxExperience();
 	void incrementCurrentExperience(int incrExperience);
-	bool ItemUsable(const Item &item, int race);
-	void updateStatsByItem(const Item &item, int race);
-	void updateStatsByEnemy(const EnemyProfile &enemy, int race);
+	//bool ItemUsable(const Item &item); // based on race
+	void updateStatsByItem(const Item &item, bool doAdd);
+	//void updateStatsByEnemy(const EnemyProfile &enemy); // based on race
 	CharacterInventory getInventory();
 private:
 	double currentExperience;
@@ -43,20 +45,20 @@ private:
 	CharacterInventory characterInventory;
 };
 
-class EnemyProfile {
+class EnemyProfile : public Profile {
 public:
-	EnemyProfile(string _name, int _level, Race _race, double _currentHealth, double _maxHealth);
+	EnemyProfile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth);
 	EnemyProfile(string _name);
-	bool ItemUsable(const Item &item, int race);
-	void updateStatsByItem(const Item &item, int race);
-	void updateStatsByEnemy(const EnemyProfile &enemy, int race);
+	bool ItemUsable(const Item &item);
+	void updateStatsByItem(const Item &item, bool doAdd);
+	void updateStatsByEnemy(const EnemyProfile &enemy);
 	EnemyInventory getInventory();
 private:
 	EnemyInventory enemyInventory;
 };
 
 /*Constructor for specific profile*/
-Profile::Profile(string _name, int _level, Race _race, double _currentHealth,
+Profile::Profile(string _name, int _level, RaceType _race, double _currentHealth,
 				 double _maxHealth) :
 name(_name), level(_level), race(_race), currentHealth(
 	_currentHealth), maxHealth(_maxHealth), isAlive(true) {
@@ -65,7 +67,7 @@ name(_name), level(_level), race(_race), currentHealth(
 
 
 /*Constructor for default profile*/
-Profile::Profile(string _name, int _level, Race _race) :
+Profile::Profile(string _name, int _level, RaceType _race) :
 	name(_name), level(_level), race(_race), maxHealth(100), currentHealth(
 	100), isAlive(true) {
 
@@ -127,16 +129,14 @@ void Profile::decrementMaxHealth(int decrHealth) {
 }
 
 /*Specific character profile, use to create storyline characters*/
-CharacterProfile::CharacterProfile(string _name, int _level, Race _race, double _currentHealth, double _maxHealth) :
+CharacterProfile::CharacterProfile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth) :
 	Profile(_name, _level, _race, _currentHealth, _maxHealth), currentExperience(0), isAlive(true) {
 		maxExperience = 10.25 * level;
 		maxHealth = level * 10;
 }
 
 /*Default character profile, used to create protagonist*/
-CharacterProfile::CharacterProfile(string _name) :
-	name(_name), level(5), currentHealth(100), maxHealth(100), currentExperience(
-	0), isAlive(true) {
+CharacterProfile::CharacterProfile(string _name) : Profile(_name, 5, 100, 100, 0) {
 		maxExperience = 10.25 * level;
 		maxHealth = level * 10;
 }
@@ -162,14 +162,26 @@ void CharacterProfile::incrementCurrentExperience(int incrExperience) {
 	}
 }
 
+/*Perform stat update to attack, defence, and agility based on item*/
+void CharacterProfile::updateStatsByItem(const Item &item, bool doAdd){
+	if(doAdd == true){ // add stat bonus
+		attack += item.getAttack();
+		defence += item.getDefence();
+		agility += item.getAgility();
+	} else if(doAdd == false){
+		attack -= item.getAttack();
+		defence -= item.getDefence();
+		agility -= item.getAgility();
+	}
+}
+
 /*Return Character's inventory*/
-// must adjust return type
 CharacterInventory CharacterProfile::getInventory(){
 	return characterInventory;
 }
 
 /*Specific enemy profile, use to create storyline characters*/
-EnemyProfile::EnemyProfile(string _name, int _level, Race _race, double _currentHealth, double _maxHealth) :
+EnemyProfile::EnemyProfile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth) :
 	Profile(_name, _level, _race, _currentHealth, _maxHealth), isAlive(true) {
 }
 
@@ -178,6 +190,18 @@ EnemyProfile::EnemyProfile(string _name) :
 	name(_name), level(5), currentHealth(100), maxHealth(100), isAlive(true) {
 }
 
+/*Perform stat update to attack, defence, and agility based on item*/
+void EnemyProfile::updateStatsByItem(const Item &item, bool doAdd){
+	if(doAdd == true){ // add stat bonus
+		attack += item.getAttack();
+		defence += item.getDefence();
+		agility += item.getAgility();
+	} else if(doAdd == false){
+		attack -= item.getAttack();
+		defence -= item.getDefence();
+		agility -= item.getAgility();
+	}
+}
 
 /*Return Enemy's inventory*/
 // must adjust return type

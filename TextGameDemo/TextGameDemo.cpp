@@ -15,9 +15,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	//Item getItem = inventory.getItem(item1);
 	//cout << inventory;
 	
-	CharacterInventory cInventory;
-	for(vector<Item>::iterator iter = cInventory.itemDatabase.begin(); iter != cInventory.itemDatabase.end(); iter++) {
-		cout << *iter;
-	}
+	//CharacterInventory cInventory;
+	//for(vector<Item>::iterator iter = cInventory.itemDatabase.begin(); iter != cInventory.itemDatabase.end(); iter++) {
+	//	cout << *iter;
+	//}
 }
 
