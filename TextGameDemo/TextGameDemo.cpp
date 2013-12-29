@@ -25,9 +25,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	//cout << hero;
 	//cout << enemy;
 
-	CharacterProfile hero((string)"Hero", 20, RaceType(1));
+	/*CharacterProfile hero((string)"Hero", 20, RaceType(1));
 	for(int i = 0; i < hero.getInventory().itemDatabase.size(); i++){
 		hero.addItemToInventory(hero.getInventory().itemDatabase.at(i));
 	}
 	cout << hero;
+
+	EnemyProfile enemy((string)"Enemy", 20, RaceType(3));
+	for(int i = 0; i < enemy.getInventory().itemDatabase.size(); i++){
+		enemy.addItemToInventory(enemy.getInventory().itemDatabase.at(i));
+	}
+
+	cout << endl << endl << enemy;*/
 }
