@@ -21,5 +21,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	//}
 
 	CharacterProfile hero((string)"Hero", 15, RaceType(0), 100, 100, 0, 100);
+	EnemyProfile enemy((string)"Villan", 15, RaceType(9), 100, 100);
 	cout << hero;
+	cout << enemy;
 }

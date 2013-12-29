@@ -54,7 +54,9 @@ public:
 	void incrementLevel();
 	void incrementMaxExperience();
 	void incrementCurrentExperience(double incrExperience);
+	bool isItemUsable(const Item &item);
 	void updateStatsByItem(const Item &item, bool doAdd);
+	void updateStatsByEnemy(const EnemyProfile &enemy);
 	const double& getCurrentExperience() const;
 	void setCurrentExperience(const double &currentExperience);
 	const double& getMaxExperience() const;
@@ -66,6 +68,19 @@ private:
 	CharacterInventory characterInventory;
 
 	friend ostream& operator<<(ostream &os, const CharacterProfile &characterProfile);
+};
+
+class EnemyProfile : public Profile{
+public:
+	EnemyProfile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth);
+	bool isItemUsable(const Item &item);
+	void updateStatsByItem(const Item &item, bool doAdd);
+	void updateStatsByEnemy(const CharacterProfile &character);
+	EnemyInventory getInventory();
+private:
+	EnemyInventory enemyInventory;
+
+	friend ostream& operator<<(ostream &os, const EnemyProfile &enemyProfile);
 };
 
 Profile::Profile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth) : name(_name), level(_level), race(_race), attack(10), defence(10), agility(10), isAlive(true) {
@@ -266,6 +281,41 @@ CharacterInventory CharacterProfile::getInventory(){
 	return characterInventory;
 }
 
+EnemyProfile::EnemyProfile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth) : Profile(_name, _level, _race, _currentHealth, _maxHealth) {
+}
+
+/*Perform stat update to attack, defence, and agility based on item*/
+void EnemyProfile::updateStatsByItem(const Item &item, bool doAdd){
+	if(doAdd == true){ // add stat bonus
+		attack += item.getAttack();
+		defence += item.getDefence();
+		agility += item.getAgility();
+	} else if(doAdd == false){
+		attack -= item.getAttack();
+		defence -= item.getDefence();
+		agility -= item.getAgility();
+	}
+}
+
+/*Return Character's inventory*/
+EnemyInventory EnemyProfile::getInventory(){
+	return enemyInventory;
+}
+
+ostream& operator<<(ostream &os, const EnemyProfile &enemyProfile){
+	os << "--" << enemyProfile.getName() << "-----" << endl;
+	os << "Level: " << enemyProfile.getLevel() << endl;
+	os << "Attack: " << enemyProfile.getAttack() << endl;
+	os << "Defence: " << enemyProfile.getDefence() << endl;
+	os << "Agility: " << enemyProfile.getAgility() << endl;
+	os << "Race: " << enemyProfile.getRace() << endl;
+	os << "Current Health: " << enemyProfile.getCurrentHealth() << endl;
+	os << "Max Health: " << enemyProfile.getMaxHealth() << endl;
+	os << "Alive?: " << enemyProfile.getIsAlive() << endl;
+
+	return os;
+}
+
 ostream& operator<<(ostream &os, const CharacterProfile &characterProfile){
 	os << "--" << characterProfile.getName() << "-----" << endl;
 	os << "Level: " << characterProfile.getLevel() << endl;
@@ -281,3 +331,4 @@ ostream& operator<<(ostream &os, const CharacterProfile &characterProfile){
 
 	return os;
 }
+
