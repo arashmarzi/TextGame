@@ -5,9 +5,7 @@
 
 class Profile {
 public:
-	Profile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth);
 	Profile(string _name, int _level, RaceType _race);
-	Profile(string _name);
 	void deathOfCharacter();
 	void isCharacterAlive();
 	void incrementCurrentHealth(int incrHealth);
@@ -50,18 +48,19 @@ protected:
 
 class CharacterProfile : public Profile {
 public:
-	CharacterProfile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth, double _currentExperience, double _maxExperience);
+	CharacterProfile(string _name, int _level, RaceType _race);
 	void incrementLevel();
 	void incrementMaxExperience();
 	void incrementCurrentExperience(double incrExperience);
-	bool isItemUsable(const Item &item);
+	//bool isItemUsable(const Item &item);
 	void updateStatsByItem(const Item &item, bool doAdd);
-	void updateStatsByEnemy(const EnemyProfile &enemy);
+	//void updateStatsByEnemy(const EnemyProfile &enemy);
 	const double& getCurrentExperience() const;
 	void setCurrentExperience(const double &currentExperience);
 	const double& getMaxExperience() const;
 	void setMaxExperience(const double &maxExperience);	
-	CharacterInventory getInventory();
+	void addItemToInventory(Item &item);
+	const CharacterInventory& getInventory() const;
 private:
 	double currentExperience;
 	double maxExperience;
@@ -72,26 +71,21 @@ private:
 
 class EnemyProfile : public Profile{
 public:
-	EnemyProfile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth);
-	bool isItemUsable(const Item &item);
+	EnemyProfile(string _name, int _level, RaceType _race);
+	//bool isItemUsable(const Item &item);
 	void updateStatsByItem(const Item &item, bool doAdd);
-	void updateStatsByEnemy(const CharacterProfile &character);
-	EnemyInventory getInventory();
+	//void updateStatsByCharacter(const CharacterProfile &character);
+	void addItemToInventory(Item &item);
+	const EnemyInventory& getInventory() const;
 private:
 	EnemyInventory enemyInventory;
 
 	friend ostream& operator<<(ostream &os, const EnemyProfile &enemyProfile);
 };
 
-Profile::Profile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth) : name(_name), level(_level), race(_race), attack(10), defence(10), agility(10), isAlive(true) {
+Profile::Profile(string _name, int _level, RaceType _race) : name(_name), level(_level), race(_race), attack(10), defence(10), agility(10), isAlive(true) {
 	maxHealth = level*10;
 	currentHealth = maxHealth;
-}
-
-Profile::Profile(string _name, int _level, RaceType _race) : name(_name), level(_level), race(_race), attack(10), defence(10), agility(10), currentHealth(50), maxHealth(50), isAlive(true) {
-}
-
-Profile::Profile(string _name) : name(_name), level(5), race(0), attack(10), defence(10), agility(10), currentHealth(50), maxHealth(50), isAlive(true) {
 }
 
 /*Character dies*/
@@ -221,8 +215,8 @@ void Profile::setIsAlive(const bool &isAlive){
 	this->isAlive = isAlive;
 }
 
-CharacterProfile::CharacterProfile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth, double _currentExperience, double _maxExperience) : 
-	Profile(_name, _level, _race, _currentHealth, _maxHealth), currentExperience(0) {
+CharacterProfile::CharacterProfile(string _name, int _level, RaceType _race) : 
+	Profile(_name, _level, _race), currentExperience(0) {
 		maxExperience = 10.25 * level;
 }
 
@@ -276,12 +270,16 @@ void CharacterProfile::setMaxExperience(const double &maxExperience) {
 	this->maxExperience = maxExperience;
 }
 
+void CharacterProfile::addItemToInventory(Item &item){
+	characterInventory.addItem(item);
+}
+
 /*Return Character's inventory*/
-CharacterInventory CharacterProfile::getInventory(){
+const CharacterInventory& CharacterProfile::getInventory() const{
 	return characterInventory;
 }
 
-EnemyProfile::EnemyProfile(string _name, int _level, RaceType _race, double _currentHealth, double _maxHealth) : Profile(_name, _level, _race, _currentHealth, _maxHealth) {
+EnemyProfile::EnemyProfile(string _name, int _level, RaceType _race) : Profile(_name, _level, _race) {
 }
 
 /*Perform stat update to attack, defence, and agility based on item*/
@@ -297,8 +295,12 @@ void EnemyProfile::updateStatsByItem(const Item &item, bool doAdd){
 	}
 }
 
-/*Return Character's inventory*/
-EnemyInventory EnemyProfile::getInventory(){
+void EnemyProfile::addItemToInventory(Item &item){
+	enemyInventory.addItem(item);
+}
+
+/*Return Enemy's inventory*/
+const EnemyInventory& EnemyProfile::getInventory() const{
 	return enemyInventory;
 }
 
@@ -311,7 +313,9 @@ ostream& operator<<(ostream &os, const EnemyProfile &enemyProfile){
 	os << "Race: " << enemyProfile.getRace() << endl;
 	os << "Current Health: " << enemyProfile.getCurrentHealth() << endl;
 	os << "Max Health: " << enemyProfile.getMaxHealth() << endl;
-	os << "Alive?: " << enemyProfile.getIsAlive() << endl;
+	os << "Alive?: " << enemyProfile.getIsAlive() << endl << endl;
+	os << "Inventory: " << endl;
+	os << enemyProfile.getInventory();
 
 	return os;
 }
@@ -327,8 +331,9 @@ ostream& operator<<(ostream &os, const CharacterProfile &characterProfile){
 	os << "Max Health: " << characterProfile.getMaxHealth() << endl;
 	os << "Current Experience: " << characterProfile.getCurrentExperience() << endl;
 	os << "Max Experience: " << characterProfile.getMaxExperience() << endl;
-	os << "Alive?: " << characterProfile.getIsAlive() << endl;
-
+	os << "Alive?: " << characterProfile.getIsAlive() << endl << endl;
+	os << "Inventory: " << endl;
+	os << characterProfile.getInventory();
 	return os;
 }
 

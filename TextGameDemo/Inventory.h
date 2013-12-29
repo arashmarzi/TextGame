@@ -20,7 +20,6 @@ public:
 	virtual Item removeItem(Item item)=0;
 	Item getItem(const Item &item);
 
-	friend ostream& operator<<(ostream &os, const Inventory &inventory);
 protected:
 	vector<Item> itemList;
 };
@@ -32,6 +31,8 @@ public:
 	Item removeItem(Item item);
 private:
 	static const int MAXCHARACTERINVENTORYSIZE = 10;
+
+	friend ostream& operator<<(ostream &os, const CharacterInventory &_characterInventory);
 };
 
 class EnemyInventory: public Inventory {
@@ -42,6 +43,7 @@ public:
 private:
 	static const int MAXENEMYINVENTORYSIZE = 3;
 
+	friend ostream& operator<<(ostream &os, const EnemyInventory &_enemyInventory);
 };
 
 Item Inventory::getItem(const Item &item){
@@ -85,9 +87,18 @@ Item EnemyInventory::removeItem(Item item){
 	return itemToRemove;
 }
 
-ostream& operator<<(ostream &os, const Inventory &_inventory){
+ostream& operator<<(ostream &os, const CharacterInventory &_characterInventory){
 	os << left << setw(15) << "Name" << setw(45) << "Description" << setw(10) << "Attack" << setw(10) << "Defence" << setw(10) << "Agility" << setw(10) << "Type" << endl;
-	for(vector<Item>::const_iterator iter = _inventory.itemList.cbegin(); iter != _inventory.itemList.end(); iter++){
+	for(vector<Item>::const_iterator iter = _characterInventory.itemList.cbegin(); iter != _characterInventory.itemList.end(); iter++){
+		os << *iter << endl;
+	}
+
+	return os;
+}
+
+ostream& operator<<(ostream &os, const EnemyInventory &_enemyInventory){
+	os << left << setw(15) << "Name" << setw(45) << "Description" << setw(10) << "Attack" << setw(10) << "Defence" << setw(10) << "Agility" << setw(10) << "Type" << endl;
+	for(vector<Item>::const_iterator iter = _enemyInventory.itemList.cbegin(); iter != _enemyInventory.itemList.end(); iter++){
 		os << *iter << endl;
 	}
 
