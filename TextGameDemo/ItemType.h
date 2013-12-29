@@ -1,15 +1,14 @@
 #include <string>
 #include <ostream>
+#include <iostream>
 using namespace std;
 
 class ItemType {
-
 	enum Type { WEAPON, MODIFIER, ARMOR };
-
 public:
 	ItemType();
 	ItemType(int _type);
-	const int getType() const;
+	const int& getType() const;
 	void setType(const int &_type);
 
 	friend ostream& operator<<(ostream &os, const ItemType &_itemType);
@@ -25,7 +24,7 @@ ItemType::ItemType(int _type) {
 	type = (Type)_type;
 }
 
-const int ItemType::getType() const {
+const int& ItemType::getType() const {
 	return (int)type;
 }
 

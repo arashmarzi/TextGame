@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "Inventory.h"
+#include "Profile.h"
 #include <iostream>
 using namespace std;
 
@@ -19,5 +19,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	//for(vector<Item>::iterator iter = cInventory.itemDatabase.begin(); iter != cInventory.itemDatabase.end(); iter++) {
 	//	cout << *iter;
 	//}
-}
 
+	CharacterProfile hero((string)"Hero", 15, RaceType(0), 100, 100, 0, 100);
+	cout << hero;
+}

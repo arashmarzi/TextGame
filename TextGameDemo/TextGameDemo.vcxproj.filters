@@ -42,9 +42,6 @@
     <ClInclude Include="Profile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Profile2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-static class Reader {
+class Reader {
 public:
 	static vector<Item> readItemsFromFile(const string fileName);
 private:
@@ -21,9 +21,9 @@ vector<Item> Reader::readItemsFromFile(const string fileName){
 
 	string name;
 	string description;
-	double attack;
-	double defence;
-	double agility;
+	int attack;
+	int defence;
+	int agility;
 	ItemType type;
 
 	Item item;

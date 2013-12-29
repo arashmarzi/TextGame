@@ -22,19 +22,19 @@ class Item {
 
 public:
 	Item();
-	Item(string _name, string _description, double _attack,
-		double _defence, double _agility, ItemType type);
+	Item(string _name, string _description, int _attack,
+		int _defence, int _agility, ItemType type);
 	Item(const Item &item);
 	const string& getDescription() const;
 	void setDescription(const string &description);
 	const string& getName() const;
 	void setName(const string &name);
-	const double& getAgility() const;
-	void setAgility(const double &agility);
-	const double& getAttack() const;
-	void setAttack(const double &attack);
-	const double& getDefence() const;
-	void setDefence(const double &defence);
+	const int& getAgility() const;
+	void setAgility(const int &agility);
+	const int& getAttack() const;
+	void setAttack(const int &attack);
+	const int& getDefence() const;
+	void setDefence(const int &defence);
 	const ItemType& getType() const;
 	void setType(const int type);
 
@@ -43,9 +43,9 @@ public:
 private:
 	string name;
 	string description;
-	double attack;
-	double defence;
-	double agility;
+	int attack;
+	int defence;
+	int agility;
 	ItemType type;
 };
 
@@ -53,8 +53,8 @@ Item::Item(){
 
 }
 
-Item::Item(string _name, string _description, double _attack,
-		   double _defence, double _agility, ItemType _type) :
+Item::Item(string _name, string _description, int _attack,
+		   int _defence, int _agility, ItemType _type) :
 name(_name), description(_description), attack(_attack), defence(
 	_defence), agility(_agility), type(_type) {
 }
@@ -79,27 +79,27 @@ void Item::setName(const string &name) {
 	this->name = name;
 }
 
-const double& Item::getAgility() const{
+const int& Item::getAgility() const{
 	return agility;
 }
 
-void Item::setAgility(const double &agility) {
+void Item::setAgility(const int &agility) {
 	this->agility = agility;
 }
 
-const double& Item::getAttack() const{
+const int& Item::getAttack() const{
 	return attack;
 }
 
-void Item::setAttack(const double &attack) {
+void Item::setAttack(const int &attack) {
 	this->attack = attack;
 }
 
-const double& Item::getDefence() const {
+const int& Item::getDefence() const {
 	return defence;
 }
 
-void Item::setDefence(const double &defence) {
+void Item::setDefence(const int &defence) {
 	this->defence = defence;
 }
 
