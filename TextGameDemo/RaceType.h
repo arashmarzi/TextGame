@@ -22,6 +22,7 @@ public:
 	RaceType(int _race);
 	const int& getRace() const;
 	void setRace(const int &_race);
+	vector<RaceType> getRaceAffinity();
 
 	friend ostream& operator<<(ostream &os, const RaceType &raceType);
 private:
@@ -71,6 +72,38 @@ void RaceType::setRace(const int &_race) {
 		race = DRAGON;
 		break;
 	}
+}
+
+vector<RaceType> RaceType::getRaceAffinity(){
+vector<RaceType> affinity;
+
+	switch(race){
+	case 0:
+		affinity.push_back(Race::HUMAN);
+		affinity.push_back(Race::IMMORTAL);
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	case 4:
+		break;
+	case 5:
+		break;
+	case 6:
+		break;
+	case 7:
+		break;
+	case 8:
+		break;
+	case 9:
+		break;
+
+	}
+
+	return affinity;
 }
 
 ostream& operator<<(ostream &os, const RaceType &_raceType){

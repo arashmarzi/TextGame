@@ -41,6 +41,7 @@ protected:
 	int defence;
 	int agility;
 	RaceType race;
+	vector<RaceType> affinity;
 	double currentHealth;
 	double maxHealth;
 	bool isAlive;
