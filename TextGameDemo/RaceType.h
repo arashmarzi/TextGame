@@ -6,36 +6,24 @@ using namespace std;
 
 class RaceType {
 	enum Race {
-		HUMAN,
-		IMMORTAL,
-		ELF,
-		GOBLIN,
-		INTERNETTROLL,
-		INSECTOID,
-		MAMMAL,
-		AQUATIC,
-		AERIAL,
-		DRAGON
+		HUMAN, // 0
+		IMMORTAL, // 1
+		ELF, // 2
+		GOBLIN, // 3
+		INTERNETTROLL, // 4
+		INSECTOID, // 5
+		MAMMAL, // 6
+		AQUATIC, // 7
+		AERIAL, // 8
+		DRAGON // 9
 	};
 
 public:
-	enum Race {
-		HUMAN,
-		IMMORTAL,
-		ELF,
-		GOBLIN,
-		INTERNETTROLL,
-		INSECTOID,
-		MAMMAL,
-		AQUATIC,
-		AERIAL,
-		DRAGON
-	};
 	RaceType();
 	RaceType(int _race);
 	const int& getRace() const;
 	void setRace(const int &_race);
-	vector<RaceType::Race> getRaceAffinity();
+	vector<RaceType> getRaceAffinity();
 
 	friend ostream& operator<<(ostream &os, const RaceType &raceType);
 private:
@@ -87,22 +75,43 @@ void RaceType::setRace(const int &_race) {
 	}
 }
 
-vector<RaceType::Race> RaceType::getRaceAffinity(){
+vector<RaceType> RaceType::getRaceAffinity(){
 
-	vector<RaceType::Race> affinity;
+	vector<RaceType> affinity;
 
 	switch(race){
 	case 0:
-		affinity.push_back(Race::HUMAN);
-		affinity.push_back(Race::IMMORTAL);
+		affinity.push_back(RaceType(5)); // insectoid
+		affinity.push_back(RaceType(6)); // mammal
 		break;
 	case 1:
+		affinity.push_back(RaceType(0)); // human
+		affinity.push_back(RaceType(2)); // elf
+		affinity.push_back(RaceType(3)); // goblin
+		affinity.push_back(RaceType(4)); // internet troll
+		affinity.push_back(RaceType(5)); // insectoid
+		affinity.push_back(RaceType(6)); // mammal
+		affinity.push_back(RaceType(7)); // aquatic
+		affinity.push_back(RaceType(8)); // aerial
+		affinity.push_back(RaceType(9)); // dragon
 		break;
 	case 2:
+	    affinity.push_back(RaceType(0)); // human
+		affinity.push_back(RaceType(7)); // goblin
+		affinity.push_back(RaceType(6)); // mammal
 		break;
 	case 3:
+		affinity.push_back(RaceType(4)); // internet troll
 		break;
 	case 4:
+		affinity.push_back(RaceType(0)); // human
+		affinity.push_back(RaceType(1)); // immortal
+		affinity.push_back(RaceType(2)); // elf
+		affinity.push_back(RaceType(5)); // insectoid
+		affinity.push_back(RaceType(6)); // mammal
+		affinity.push_back(RaceType(7)); // aquatic
+		affinity.push_back(RaceType(8)); // aerial
+		affinity.push_back(RaceType(9)); // dragon
 		break;
 	case 5:
 		break;
@@ -111,10 +120,17 @@ vector<RaceType::Race> RaceType::getRaceAffinity(){
 	case 7:
 		break;
 	case 8:
+		affinity.push_back(RaceType(0)); // human
+		affinity.push_back(RaceType(4)); // insectoid
+		affinity.push_back(RaceType(6)); // mammal
 		break;
 	case 9:
+		affinity.push_back(RaceType(0)); // human
+		affinity.push_back(RaceType(5)); // insectoid
+		affinity.push_back(RaceType(6)); // mammal
+		affinity.push_back(RaceType(7)); // aquatic
+		affinity.push_back(RaceType(8)); // aerial
 		break;
-
 	}
 
 	return affinity;

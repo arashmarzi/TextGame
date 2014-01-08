@@ -57,7 +57,7 @@ public:
 	void incrementCurrentExperience(double incrExperience);
 	//bool isItemUsable(const Item &item);
 	void updateStatsByItem(const Item &item, bool doAdd);
-	//void updateStatsByEnemy(const EnemyProfile &enemy);
+	void updateStatsByEnemy(const EnemyProfile &enemy);
 	const double& getCurrentExperience() const;
 	void setCurrentExperience(const double &currentExperience);
 	const double& getMaxExperience() const;
@@ -89,6 +89,7 @@ private:
 Profile::Profile(string _name, int _level, RaceType _race) : name(_name), level(_level), race(_race), attack(10), defence(10), agility(10), isAlive(true) {
 	maxHealth = level*10;
 	currentHealth = maxHealth;
+	affinity = race.getRaceAffinity();
 }
 
 /*Character dies*/
@@ -254,6 +255,19 @@ void CharacterProfile::incrementCurrentExperience(double incrExperience) {
 
 /*Perform stat update to attack, defence, and agility based on item*/
 void CharacterProfile::updateStatsByItem(const Item &item, bool doAdd){
+	if(doAdd == true){ // add stat bonus
+		attack += item.getAttack();
+		defence += item.getDefence();
+		agility += item.getAgility();
+	} else if(doAdd == false){
+		attack -= item.getAttack();
+		defence -= item.getDefence();
+		agility -= item.getAgility();
+	}
+}
+
+/*Perform stat update to attack, defence, and agility based on enemy race type*/
+void CharacterProfile::updateStatsByEnemy(const Profile &enemy){
 	if(doAdd == true){ // add stat bonus
 		attack += item.getAttack();
 		defence += item.getDefence();
