@@ -32,6 +32,8 @@ public:
 	void setMaxHealth(const double &maxHealth);
 	const bool& getIsAlive() const;
 	void setIsAlive(const bool &isAlive);
+	const vector<RaceType>& getRaceAffinity() const;
+	void setRaceAffinity(const vector<RaceType> &affinity);
 	//void updateStatsByEnemy(const EnemyProfile &enemy);
 
 protected:
@@ -214,6 +216,14 @@ const bool& Profile::getIsAlive() const{
 
 void Profile::setIsAlive(const bool &isAlive){
 	this->isAlive = isAlive;
+}
+
+const vector<RaceType>& Profile::getRaceAffinity() const{
+	return affinity;
+}
+
+void Profile::setRaceAffinity(const vector<RaceType> &affinity){
+	this->affinity = affinity;
 }
 
 CharacterProfile::CharacterProfile(string _name, int _level, RaceType _race) : 

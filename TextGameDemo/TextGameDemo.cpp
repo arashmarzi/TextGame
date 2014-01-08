@@ -37,4 +37,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	cout << endl << endl << enemy;*/
+
+	CharacterProfile hero("Hero", 20, RaceType(0));
+	vector<RaceType::Race> affinity;
+	affinity = hero.getRaceAffinity();
+
+	for(int i = 0; i < affinity.size(); i++){
+		cout << affinity.at(i) << endl;
+	}
 }

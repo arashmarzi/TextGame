@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <ostream>
+#include <vector>
 using namespace std;
 
 class RaceType {
@@ -18,11 +19,23 @@ class RaceType {
 	};
 
 public:
+	enum Race {
+		HUMAN,
+		IMMORTAL,
+		ELF,
+		GOBLIN,
+		INTERNETTROLL,
+		INSECTOID,
+		MAMMAL,
+		AQUATIC,
+		AERIAL,
+		DRAGON
+	};
 	RaceType();
 	RaceType(int _race);
 	const int& getRace() const;
 	void setRace(const int &_race);
-	vector<RaceType> getRaceAffinity();
+	vector<RaceType::Race> getRaceAffinity();
 
 	friend ostream& operator<<(ostream &os, const RaceType &raceType);
 private:
@@ -74,8 +87,9 @@ void RaceType::setRace(const int &_race) {
 	}
 }
 
-vector<RaceType> RaceType::getRaceAffinity(){
-vector<RaceType> affinity;
+vector<RaceType::Race> RaceType::getRaceAffinity(){
+
+	vector<RaceType::Race> affinity;
 
 	switch(race){
 	case 0:
