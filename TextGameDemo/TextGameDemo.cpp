@@ -50,4 +50,10 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 		cout << endl;
 	}
+	CharacterProfile charr(chars.at(1));
+	cout << charr.getAttack() << " " << charr.getDefence() << " " << charr.getAgility() << endl;
+	charr.addStatsByEnemy(EnemyProfile("enemy", 20, RaceType(0)));
+	cout << charr.getAttack() << " " << charr.getDefence() << " " << charr.getAgility() << endl;
+	charr.removeStatsByEnemy();
+	cout << charr.getAttack() << " " << charr.getDefence() << " " << charr.getAgility() << endl;
 }

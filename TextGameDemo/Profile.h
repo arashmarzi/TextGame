@@ -18,12 +18,12 @@ public:
 	void setName(const string &name);
 	const int& getLevel() const;
 	void setLevel(const int &name);
-	const int& getAttack() const;
-	void setAttack(const int &attack);
-	const int& getDefence() const;
-	void setDefence(const int &defence);
-	const int& getAgility() const;
-	void setAgility(const int &agility);
+	const double& getAttack() const;
+	void setAttack(const double &attack);
+	const double& getDefence() const;
+	void setDefence(const double &defence);
+	const double& getAgility() const;
+	void setAgility(const double &agility);
 	const RaceType& getRace() const;
 	void setRace(const int &_race);
 	const double& getCurrentHealth() const;
@@ -39,16 +39,16 @@ public:
 protected:
 	string name;
 	int level;
-	int attack;
-	int defence;
-	int agility;
+	double attack;
+	double defence;
+	double agility;
 	RaceType race;
 	vector<RaceType> affinity;
 	double currentHealth;
 	double maxHealth;
 	bool isAlive;
 };
-
+class EnemyProfile;
 class CharacterProfile : public Profile {
 public:
 	CharacterProfile(string _name, int _level, RaceType _race);
@@ -57,7 +57,8 @@ public:
 	void incrementCurrentExperience(double incrExperience);
 	//bool isItemUsable(const Item &item);
 	void updateStatsByItem(const Item &item, bool doAdd);
-	void updateStatsByEnemy(const EnemyProfile &enemy);
+	void addStatsByEnemy(const EnemyProfile &enemy);
+	void removeStatsByEnemy();
 	const double& getCurrentExperience() const;
 	void setCurrentExperience(const double &currentExperience);
 	const double& getMaxExperience() const;
@@ -77,7 +78,8 @@ public:
 	EnemyProfile(string _name, int _level, RaceType _race);
 	//bool isItemUsable(const Item &item);
 	void updateStatsByItem(const Item &item, bool doAdd);
-	//void updateStatsByCharacter(const CharacterProfile &character);
+	void addStatsByCharacter(const CharacterProfile &character);
+	void removeStatsByCharacter();
 	void addItemToInventory(Item &item);
 	const EnemyInventory& getInventory() const;
 private:
@@ -163,27 +165,27 @@ void Profile::setLevel(const int &level){
 	this->level = level;
 }
 
-const int& Profile::getAttack() const{
+const double& Profile::getAttack() const{
 	return attack;
 }
 
-void Profile::setAttack(const int &attack){
+void Profile::setAttack(const double &attack){
 	this->attack = attack;
 }
 
-const int& Profile::getDefence() const{
+const double& Profile::getDefence() const{
 	return defence;
 }
 
-void Profile::setDefence(const int &defence){
+void Profile::setDefence(const double &defence){
 	this->defence = defence;
 }
 
-const int& Profile::getAgility() const{
+const double& Profile::getAgility() const{
 	return agility;
 }
 
-void Profile::setAgility(const int &agility){
+void Profile::setAgility(const double &agility){
 	this->agility = agility;
 }
 
@@ -267,16 +269,22 @@ void CharacterProfile::updateStatsByItem(const Item &item, bool doAdd){
 }
 
 /*Perform stat update to attack, defence, and agility based on enemy race type*/
-void CharacterProfile::updateStatsByEnemy(const Profile &enemy){
-	if(doAdd == true){ // add stat bonus
-		attack += item.getAttack();
-		defence += item.getDefence();
-		agility += item.getAgility();
-	} else if(doAdd == false){
-		attack -= item.getAttack();
-		defence -= item.getDefence();
-		agility -= item.getAgility();
+void CharacterProfile::addStatsByEnemy(const EnemyProfile &enemy){
+	bool isUpdated = false;
+	for(int i = 0; i < affinity.size() && !isUpdated; i++){
+		if(enemy.getRace().getRace() == affinity.at(i).getRace()){
+			isUpdated = true;
+			attack *= 1.25;
+			defence *= 1.25;
+			agility *= 1.25;
+		}
 	}
+}
+
+void CharacterProfile::removeStatsByEnemy(){
+	attack = attack / 1.25;
+	defence = defence / 1.25;
+	agility = agility / 1.25;
 }
 
 const double& CharacterProfile::getCurrentExperience() const{
@@ -320,6 +328,24 @@ void EnemyProfile::updateStatsByItem(const Item &item, bool doAdd){
 	}
 }
 
+/*Perform stat update to attack, defence, and agility based on enemy race type*/
+void EnemyProfile::addStatsByCharacter(const CharacterProfile &enemy){
+	bool isUpdated = false;
+	for(int i = 0; i < affinity.size() && !isUpdated; i++){
+		if(enemy.getRace().getRace() == affinity.at(i).getRace()){
+			isUpdated = true;
+			attack *= 1.25;
+			defence *= 1.25;
+			agility *= 1.25;
+		}
+	}
+}
+
+void EnemyProfile::removeStatsByCharacter(){
+	attack = attack / 1.25;
+	defence = defence / 1.25;
+	agility = agility / 1.25;
+}
 void EnemyProfile::addItemToInventory(Item &item){
 	enemyInventory.addItem(item);
 }
