@@ -1,6 +1,6 @@
 TextGame To Do List
 ========
-1. Implement RaceType Affinities - using some semi-efficient structure
+1. Item usability
 2. Format printing
 3. Create menu options - basic game loop
 4. Create World Map - using graph
